@@ -1,55 +1,68 @@
-n = 10**6
-
+import math
 nargs = int(input())
+arr  = []    
+for i in range(nargs):
+    cast = list(map(int, input().split())) 
+    arr.append(cast)
 
-arr = []
-
-for _ in range(nargs):
-    arr2 = list(map(int,input().split(' ')))
-    arr.append(arr2)
-smallest = 0
 smallest = arr[0][0]
-greatest = 0
 greatest = arr[0][0]
 
 for i in arr:
     for j in i:
         if(j<smallest):
-            smmalest = j
+            smallest = j
         
         if(j>greatest):
             greatest = j
 
+def isPrime(n) : 
+    
+    # Corner cases 
+    if (n <= 1) : 
+        return False
+    if (n <= 3) : 
+        return n
+  
+    # This is checked so that we can skip  
+    # middle five numbers in below loop 
+    if (n % 2 == 0 or n % 3 == 0) : 
+        return False
+  
+    i = 5
+    while(i * i <= n) : 
+        if (n % i == 0 or n % (i + 2) == 0) : 
+            return False
+        i = i + 6
+  
+    return n
+      
 
-ogsmall = smallest
-oggreat = greatest
-primelist = [0 for i in range(n)]
-while(greatest!=smallest):
-    flag = 0
-    for i in range(2, smallest-1, +1):
-        if(smallest%i == 0):
-            flag = 1
-            break
-    if(flag ==0):
-        primelist[smallest] = smallest
-    smallest= smallest +1
-start = 0
-end = 0
-
+primelist = []
+for i in range(0, greatest+1):
+    
+    primelist.append(isPrime(i))
+ 
 
 for i in arr:
-    
-    
     start = i[0]
     end = i[1]
+    newprime = []
     sum = 0
-    for j in range(start,end+1):
+    count = True
+    for j in range(start, end+1):
         
-        for k in range(j, start-1, -1):
-           if(primelist[k] != 0):
-               if(j % k == 0):
-                   sum = sum + k
-                   
-    print(sum)
-         
+        if(primelist[j]!=False):
+            
+            sum += j
+        else:
+            nlist = [k for k in primelist[start:j] if k!=False]
+            
+            for k in nlist:
+                if(j%k == 0):
+                    sum += k
+                
 
+                       
+    print(sum)
+    
