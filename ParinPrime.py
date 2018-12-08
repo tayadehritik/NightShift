@@ -1,4 +1,4 @@
-import math
+
 nargs = int(input())
 arr  = []    
 for i in range(nargs):
@@ -16,53 +16,39 @@ for i in arr:
         if(j>greatest):
             greatest = j
 
-def isPrime(n) : 
-    
-    # Corner cases 
-    if (n <= 1) : 
-        return False
-    if (n <= 3) : 
-        return n
-  
-    # This is checked so that we can skip  
-    # middle five numbers in below loop 
-    if (n % 2 == 0 or n % 3 == 0) : 
-        return False
-  
-    i = 5
-    while(i * i <= n) : 
-        if (n % i == 0 or n % (i + 2) == 0) : 
-            return False
-        i = i + 6
-  
-    return n
+
       
 
-primelist = []
-for i in range(0, greatest+1):
-    
-    primelist.append(isPrime(i))
- 
+
+def primes(n):
+    """ Returns  a list of primes < n """
+    sieve = [True] * n
+    for i in range(3,int(n**0.5)+1,2):
+        if sieve[i]:
+            sieve[i*i::2*i]=[False]*(int((n-i*i-1)/(2*i)+1))
+    return [2] + [i for i in range(3,n,2) if sieve[i]]
+
+
+newprimelist = primes(greatest)
+
 
 for i in arr:
     start = i[0]
     end = i[1]
-    newprime = []
     sum = 0
-    count = True
-    for j in range(start, end+1):
-        
-        if(primelist[j]!=False):
-            
-            sum += j
-        else:
-            nlist = [k for k in primelist[start:j] if k!=False]
-            
-            for k in nlist:
-                if(j%k == 0):
-                    sum += k
-                
+    for j in newprimelist:
+        k = j
+        #for k in range(j, end+1, j):
+        #    print(j,k,sum, end)
+        #    sum += j
+        while k<=end:
+            #print(sum)
+            if k>=start:
+                sum += j
+                k += j
+            else:
+                k += j
 
-                       
-    print(sum)
+           
+    print(sum%1000000007)
     
