@@ -1,7 +1,8 @@
 import java.util.*;
 import java.lang.*;
 import java.math.BigInteger;
-public class FactNewNew 
+import java.lang.Math;
+class FactNewNew 
 {
 	public static void main(String args[])
 	{
@@ -10,16 +11,16 @@ public class FactNewNew
 		int num = sc.nextInt();
 		for(int i=0;i<num;i++)
 		{
-			
-			BigInteger fact = factorial(sc.nextInt());		
-			
+			int nnum = sc.nextInt();
+			BigInteger fact = factorial(nnum);		
+				
 			String s = fact.toString();
 			
 			char[] arr = s.toCharArray();
 			BigInteger counter = BigInteger.valueOf(0);
 			for(int j=arr.length-1;j>=0;j--)
 			{
-				System.out.println("in check");
+				
 				
 				if(arr[j] != '0')
 				{
@@ -30,19 +31,36 @@ public class FactNewNew
 					counter = counter.add(BigInteger.valueOf(1));
 				}
 			}
-			System.out.println(counter);
+			
 		}	
 	}
 	public static BigInteger factorial(int num)
 	{
 		BigInteger fact = BigInteger.valueOf(num);
-		for(int i=num-1;i>1;i--)
+		BigInteger tempfact = fact;
+		if(num%2==0)
 		{
-			System.out.println("in fact");
-			fact = fact.multiply(BigInteger.valueOf(i));
+			for(int i=num-2;i>1;i=i-2)
+			{
+			
+				tempfact = tempfact.add(BigInteger.valueOf(i));
+				fact = fact.multiply(tempfact);
+				String fs = fact.toString();
+				System.out.println(fs);
+				System.out.println(i);
+				System.out.println(fs.charAt(fs.length()-1));			
+			}
+			return fact;
+		}
+		else
+		{
+			BigInteger newfact = factorial(num-1);
+			newfact = newfact.multiply(BigInteger.valueOf(num));
+			
+			return newfact;			
 		
 		}
-		return fact;
+	} 
+
 	
-	}
 }
