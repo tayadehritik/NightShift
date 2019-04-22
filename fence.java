@@ -23,8 +23,11 @@ class fence
 				cpcellsm[i] = sc.nextInt();	
 			}
 
+			mergeSort(cpcellsm, cpcellsn, 0, cpcellsm.length-1);
 			mergeSort(cpcellsn, cpcellsm, 0, cpcellsn.length-1);
 			
+
+
 			int flag = 1;
 			count = count + 2;
 			int prvm = cpcellsm[0];
