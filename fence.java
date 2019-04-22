@@ -63,7 +63,7 @@ class fence
 		
 
 		
-			
+			mergeSort(cpcellsn, cpcellsm, 0, cpcellsn.length-1);	
 			mergeSort(cpcellsm, cpcellsn, 0, cpcellsm.length-1);
 			
 			int mflag = 1;
