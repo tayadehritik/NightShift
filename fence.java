@@ -28,7 +28,7 @@ class fence
 			
 
 
-			int flag = 1;
+			int flag = cpcellsn[0];
 			count = count + 2;
 			int prvm = cpcellsm[0];
 			for(int i=1;i<k;i++)
@@ -63,10 +63,10 @@ class fence
 		
 
 		
-			mergeSort(cpcellsn, cpcellsm, 0, cpcellsn.length-1);	
+				
 			mergeSort(cpcellsm, cpcellsn, 0, cpcellsm.length-1);
 			
-			int mflag = 1;
+			int mflag = cpcellsm[0];
 			int ncount = 2;
 			int prvn = cpcellsn[0];
 
