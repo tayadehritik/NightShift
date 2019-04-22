@@ -25,29 +25,80 @@ class fence
 
 			mergeSort(cpcellsn, cpcellsm, 0, cpcellsn.length-1);
 			
-			for(int i=0;i<k;i++)
+			int flag = 1;
+			count = count + 2;
+			int prvm = cpcellsm[0];
+			for(int i=1;i<k;i++)
 			{
-				if(cpcellsn[i] == leastindex)
+			
+				if(cpcellsn[i] != flag)
 				{
-					count = count + 1;
+					count = count + 2;
+					flag = cpcellsn[i];
+					prvm = cpcellsm[i] ;
+					
+				
 				}
-				else if(cpcellsn[i] == n)
+				
+				else
 				{
 					count = count + 1;
-				}
-
-				if(cpcellsm[i] == leastindex)
-				{
-					count = count + 1;
-				}
-				else if(cpcellsm[i] == m)
-				{
-					count = count + 1;
+					if(prvm == cpcellsm[i] - 1)
+					{
+						count = count - 1;
+						prvm = cpcellsm[i];
+					}
+					else
+					{
+						count = count + 1;
+						prvm = cpcellsm[i];
+					}
 				}
 			
 			}
 
-			System.out.println(count);	
+		
+
+		
+			
+			mergeSort(cpcellsm, cpcellsn, 0, cpcellsm.length-1);
+			
+			int mflag = 1;
+			int ncount = 2;
+			int prvn = cpcellsn[0];
+
+			for(int i=1;i<k;i++)
+			{
+			
+				if(mflag != cpcellsm[i])
+				{
+					ncount = ncount + 2;
+					prvn = cpcellsn[i];
+					mflag = cpcellsm[i];
+				
+				}
+				else
+				{
+					ncount = ncount + 1;
+					if(prvn == cpcellsn[i] - 1)
+					{
+						ncount = ncount - 1;
+						prvn = cpcellsn[i];
+					
+					}
+					else
+					{
+						ncount = ncount + 1;
+						prvn = cpcellsn[i];
+					}
+				
+				}
+			
+			}	
+
+			System.out.println(count + ncount);
+
+
 
 		}
 	
