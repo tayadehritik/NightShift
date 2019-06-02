@@ -28,40 +28,46 @@ class matchs
 			}
 
 			BigInteger zero = new BigInteger("0");	
-			while(bignum.compareTo(zero) > 0 && smallnum.compareTo(zero)>0)
+			BigInteger x;
+		
+			if(bignum.mod(smallnum).compareTo(zero) == 0)
 			{
-				if(bignum.compareTo(smallnum)<0)
-				{
-					BigInteger temp = smallnum;
-					smallnum = bignum;
-					bignum = temp;
-				}
-
-				try{
-					bignum = bignum.mod(smallnum);
-				}
-				catch(ArithmeticException ae)
-				{
-					break;
-				}
-
-				player = player + 1;
-				
-				/*
-				System.out.println("-----\n"+bignum+" "+smallnum);
-				System.out.println(bignum+"\n-------\n");
-			*/
-			}
-
+				System.out.println("Ari");
 			
-			if(player % 2 == 0)
-			{
-				System.out.println("Rich");
 			}
 			else
 			{
-				System.out.println("Ari");
+				while(bignum.compareTo(zero) != 0 && smallnum.compareTo(zero) != 0)
+				{
+					bignum = bignum.mod(smallnum);
+					player = player + 1;
+
+					if(bignum.compareTo(smallnum)<0)
+					{
+						BigInteger temp = smallnum;
+						smallnum = bignum;
+						bignum = temp;
+					}
+
+					System.out.println(bignum +"  "+ smallnum);
+					
+			
+				}
+
+				if(player % 2 == 0)
+				{
+					System.out.println("Rich");
+				}
+				else
+				{
+					System.out.println("Ari");
+				}
+			
 			}
+
+
+
+			
 		
 
 			
