@@ -58,7 +58,7 @@ class cleanup
 			{
 				if(i%2!=0)
 				{
-					System.out.print(tjobs[i]+" ");
+					System.out.print(tjobs[i]+" :");
 				}
 			}
 			System.out.print("\n");
