@@ -22,10 +22,9 @@ class johny
 
 			mergeSort(arr, 0, arr.length-1);
 
-			for(int i=0;i<arr.length;i++)
-			{
-				System.out.println(arr[i]);
-			}
+			int keypos = binSearch(arr, 0, arr.length-1, key);
+
+			System.out.println(keypos+1);
 		
 		}
 	
@@ -36,10 +35,10 @@ class johny
 	{
 		if(l<r)
 		{
-			System.out.println("in here");
+			
 			int m = (l+r)/2;
 			mergeSort(arr, l, m);
-			mergeSort(arr,m+1,l);
+			mergeSort(arr,m+1,r);
 			merge(arr, l, m, r);
 		
 		}
@@ -105,12 +104,12 @@ class johny
 
 		if(key > arr[m])
 		{
-			l = m ;
+			l = m+1 ;
 			return binSearch(arr, l, r, key);
 		}
 		else if(key < arr[m])
 		{
-			r = m;
+			r = m-1;
 			return binSearch(arr, l, r ,key);
 		}
 		else
