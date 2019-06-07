@@ -9,11 +9,11 @@ class proxyc
 		for(int l=0;l<t;l++)
 		{
 			int d = sc.nextInt();
-			float k = d;
+			double k = d;
 			char[] sarr = new char[d];
 			String s = sc.next();
 			s.getChars(0,s.length(),sarr,0);
-			float currAttc = 0;
+			double currAttc = 0;
 			for(int i=0;i<d;i++)
 			{
 				if(sarr[i] == 'P')
@@ -22,14 +22,14 @@ class proxyc
 					
 				}
 			}
-			float currAtt = currAttc / k;
+			double currAtt = currAttc / k;
 
 			
 			int i = 2;
 			int proxycounter = 0;
 			while(currAtt<0.75 && i < d-2)
 			{
-				if((sarr[i-1] == 'P' || sarr[i-2] == 'P') && (sarr[i+1] == 'P' || sarr[i+2]=='P'))
+				if((sarr[i-1] == 'P' || sarr[i-2] == 'P') && (sarr[i+1] == 'P' || sarr[i+2]=='P') && sarr[i] != 'P')
 				{
 					
 					proxycounter++;
@@ -40,6 +40,10 @@ class proxyc
 				i++;
 				currAtt = currAttc / k;
 			
+			}
+			if(currAtt<0.75)
+			{
+				proxycounter = -1;
 			}
 			System.out.println(proxycounter);
 		
