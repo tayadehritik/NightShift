@@ -11,12 +11,13 @@ class ks2
 		{
 			String ninput = sc.next();
 			BigInteger n = new BigInteger(ninput);
-			int n1 =  Integer.parseInt(ninput);
+			
 			int ans = 0;
 			int counter = 0;
-			BigInteger compare = new BigInteger("1000000");
+			BigInteger compare = new BigInteger("10");
 			if(n.compareTo(compare) < 0 )
 			{
+				int n1 = Integer.parseInt(ninput);
 
 				for(int i=10;i<1000000;i++)
 				{
@@ -32,7 +33,8 @@ class ks2
 					{
 					
 						counter++;
-						System.out.println(i);
+						System.out.println(counter +" "+i);
+						
 					}
 
 
@@ -48,7 +50,28 @@ class ks2
 			}
 			else
 			{
+				char[] sarr = new char[ninput.length()];
+				ninput.getChars(0,ninput.length(),sarr,0);
+				BigInteger sum = new BigInteger("0");
+				BigInteger zero = new BigInteger("10");
+				for(int j=0;j<ninput.length();j++)
+				{
+					BigInteger temp = new BigInteger(Character.toString(sarr[j]));
+					sum = sum.add(temp);
+				}
+				BigInteger ed;	
+				if(sum.compareTo(zero) > 0)
+				{
+					ed = sum.mod(zero);
+				
+				}
+				else
+				{
+					ed = zero.subtract(sum);
+				}	
 			
+
+				System.out.println(ed);	
 			}
 
 		}
