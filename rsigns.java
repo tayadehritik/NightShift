@@ -11,8 +11,8 @@ class rsigns
 		for(int l=0;l<t;l++)
 		{
 			double k = sc.nextDouble();
-
-			if(k<=5)
+			int consta =(int) Math.pow(10,9) + 7;
+			if(k==-1)
 			{
 				int total_signs =(int) Math.pow(10,k);
 				int counter = 0;
@@ -54,7 +54,7 @@ class rsigns
 
 					if(setC.size() == 2)
 					{
-						
+						System.out.println(setA.size()+" "+setB.size()+" "+i+" "+k2+" "+setA+" "+setB);	
 						counter++;
 					}
 
@@ -67,7 +67,13 @@ class rsigns
 			}
 			else
 			{
-				System.out.println(1);	
+				int start = 10;
+				for(int i=1;i<k;i++)
+				{
+					start = (start + start) % consta;
+				
+				}
+				System.out.println(start);
 			}
 			
 		}
