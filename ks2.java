@@ -33,7 +33,7 @@ class ks2
 					{
 					
 						counter++;
-						System.out.println(counter +" "+i);
+						
 						
 					}
 
@@ -51,27 +51,43 @@ class ks2
 			else
 			{
 				char[] sarr = new char[ninput.length()];
+				
 				ninput.getChars(0,ninput.length(),sarr,0);
 				BigInteger sum = new BigInteger("0");
 				BigInteger zero = new BigInteger("10");
+				BigInteger actzero = new BigInteger("0");
 				for(int j=0;j<ninput.length();j++)
 				{
 					BigInteger temp = new BigInteger(Character.toString(sarr[j]));
 					sum = sum.add(temp);
 				}
 				BigInteger ed;	
-				if(sum.compareTo(zero) > 0)
+				BigInteger uplimit = sum;
+				BigInteger one = new BigInteger("1");
+				while(uplimit.mod(zero).compareTo(actzero)!=0)
+				{
+					uplimit = uplimit.add(one);
+					
+				}	
+					
+			
+
+				
+				
+				if((sum).compareTo(uplimit) > 0)
 				{
 					ed = sum.mod(zero);
-				
 				}
 				else
 				{
-					ed = zero.subtract(sum);
-				}	
-			
+					ed = uplimit.subtract(sum);
+				}
+				
+				String edstr = ed.toString();
+				BigInteger ansog = new BigInteger(ninput+edstr);
+				System.out.println(ansog);
 
-				System.out.println(ed);	
+
 			}
 
 		}
