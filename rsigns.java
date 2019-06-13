@@ -8,76 +8,101 @@ class rsigns
 	{
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
+		int laststart = 10;
+		double counter2 = 1;
+		BigInteger lint = new BigInteger("1000000007");
+		int oglimit = 0;
 		for(int l=0;l<t;l++)
 		{
-			double k = sc.nextDouble();
+			//double k = sc.nextDouble();
+			//int k = sc.nextInt();
+			String k = sc.next();
 			int consta =(int) Math.pow(10,9) + 7;
-			if(k==-1)
+			int q = 1;
+			if(q == 2)
 			{
-				int total_signs =(int) Math.pow(10,k);
-				int counter = 0;
-				for(int i=0;i<total_signs;i++)
+				BigInteger consta2 = new BigInteger("10000000007");
+				BigInteger start = BigInteger.TEN;
+				BigInteger k3 = new BigInteger(k);
+				BigInteger i = BigInteger.ONE;
+				//k3 = k3.subtract(BigInteger.ONE);
+				while(i.equals(k3) == false)
 				{
-					
-					String s = Integer.toString(i);
-					int  k2 = total_signs-i-1;
-					String s2 = Integer.toString(k2);
-					char[] sarr2 = new char[s2.length()];
-					char[] sarr = new char[s.length()];
-					s2.getChars(0,s2.length(),sarr2,0);
-					s.getChars(0,s.length(),sarr,0);
-					Set setA = new HashSet();
-					Set setB = new HashSet();
-
-					for(int j=0;j<s.length();j++)
-					{
-						setA.add(sarr[j]);
-					}
-					for(int j=0;j<s2.length();j++)
-					{
-						setB.add(sarr2[j]);
-					}
-
-					//System.out.println(setA.size() + " " + setB.size()+ " " +i+ " " +k2+" "+setA+" "+setB);
-					Set setC = new HashSet();
-
-					Iterator iterator = setA.iterator();
-					while(iterator.hasNext())
-					{
-						setC.add(iterator.next());
-					}
-					iterator = setB.iterator();
-					while(iterator.hasNext())
-					{
-						setC.add(iterator.next());
-					}
-
-					if(setC.size() == 2)
-					{
-						System.out.println(setA.size()+" "+setB.size()+" "+i+" "+k2+" "+setA+" "+setB);	
-						counter++;
-					}
-
-					
-
+					start = (start.add(start)).mod(consta2);
+					System.out.println(i.add(BigInteger.ONE)+" "+start);
+					i = i.add(BigInteger.ONE);
 				
 				}
-
-				System.out.println(counter);
 			}
 			else
 			{
-				int start = 10;
-				for(int i=1;i<k;i++)
-				{
-					start = (start + start) % consta;
+				//k = k-1;
+				BigInteger ten = new BigInteger("10");
+				//double start = (Math.pow(2,k)*10)%consta;
+				BigInteger start = new BigInteger("2");
+				int kl = k.length()-1;
+				BigInteger two = new BigInteger("2");
+				BigInteger five = new BigInteger("5");
+				BigInteger k1 = new BigInteger(k);
+				k1 = k1.subtract(BigInteger.ONE);
 				
-				}
-				System.out.println(start);
+				//if(k1.equals(BigInteger.ONE))
+				//{
+				//	System.out.println(10);
+				//}	
+				//else
+				//{
+				
+					/*for(int i=3;i<=k;i++)
+					{
+						start = ((start.multiply(two))).mod(lint);
+						//System.out.println(i+" "+start);
+				
+					}*/
+					//BigInteger k1 = new BigInteger(k);
+
+					BigInteger result = start.modPow(k1,lint);
+					
+				/*BigInteger i = BigInteger.ONE;
+				BigInteger result = two;
+				while(i.equals(k1) == false)
+				{
+					result = result.multiply(two);
+
+					i = i.add(BigInteger.ONE);
+					System.out.println(i.add(BigInteger.ONE)+" "+result);
+				
+				}	
+				
+				*/
+				
+
+				System.out.println(result.multiply(BigInteger.TEN).mod(lint));
+						
+					
+				//}
+				
+		
+
 			}
 			
 		}
 	
+	}
+	static double consta2 =  Math.pow(10,9)+7;
+	static double rec(double pos)
+	{
+		
+		if(pos == 1)
+		{
+			return 10;
+		}
+		else
+		{
+			double someth =  rec(pos-1);
+			return (someth + someth) % consta2;
+
+		}
 	}
 
 }
