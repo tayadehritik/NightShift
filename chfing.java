@@ -33,9 +33,10 @@ class chfing
 				}
 				else
 				{
-					
+					//System.out.println(firstnum-temp);
 					tastiness = tastiness + (firstnum -temp-1);
 				}
+				i++;
 			
 			}
 		
