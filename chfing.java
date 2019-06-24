@@ -11,32 +11,35 @@ class chfing
 
 		for(int l=0;l<t;l++)
 		{
-			int n = sc.nextInt();
-			int k = sc.nextInt();
+			String nst = sc.next();
+			String kst = sc.next();
 
-			int tastiness = k-1;
-			int i = 2;
+			BigInteger n = new BigInteger(nst);
+			BigInteger k = new BigInteger(kst);
 
-			int n1 = k;
-			int n2 = k+n-1;
-			int firstnum = n1;
-			int secondnum = n2;
+			BigInteger tastiness = k.subtract(BigInteger.ONE);
+			BigInteger i = new BigInteger("2");
+
+			BigInteger n1 = k;
+			BigInteger n2 = k.add(n).subtract(BigInteger.ONE);
+			BigInteger firstnum = n1;
+			BigInteger secondnum = n2;
 			while(true)
 			{
-				int temp = secondnum;
-				firstnum = n1 * i;
-				secondnum = n2 * i;
+				BigInteger temp = secondnum;
+				firstnum = n1.multiply(i);
+				secondnum = n2.multiply(i);
+				BigInteger diff = firstnum.subtract(temp);
 
-				if(firstnum - temp <= 0)
-				{
+				if(diff.compareTo(BigInteger.ZERO) <= 0) {
 					break;
 				}
 				else
 				{
 					//System.out.println(firstnum-temp);
-					tastiness = tastiness + (firstnum -temp-1);
+					tastiness = tastiness.add(firstnum.subtract(temp).subtract(BigInteger.ONE));
 				}
-				i++;
+				i = i.add(BigInteger.ONE);
 			
 			}
 		
