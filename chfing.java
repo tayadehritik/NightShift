@@ -8,7 +8,7 @@ class chfing
 	
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
-
+		BigInteger consta = new BigInteger("1000000007");
 		for(int l=0;l<t;l++)
 		{
 			String nst = sc.next();
@@ -36,8 +36,8 @@ class chfing
 				}
 				else
 				{
-					//System.out.println(firstnum-temp);
-					tastiness = tastiness.add(firstnum.subtract(temp).subtract(BigInteger.ONE));
+					System.out.println(i);
+					tastiness = (tastiness.add(firstnum.subtract(temp).subtract(BigInteger.ONE))).mod(consta);
 				}
 				i = i.add(BigInteger.ONE);
 			
