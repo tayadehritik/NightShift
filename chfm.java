@@ -9,82 +9,39 @@ class chfm
 		
 		int t = sc.nextInt();
 
-		for(int k=0;k<t;k++)
+		while(t!=0)
 		{
-			
 			int n = sc.nextInt();
+			int[] arr = new int[n];
+			fillArray(arr, sc);
+			float ogMean = returnOriginalMean(arr);
+			System.out.println(ogMean);
 
-			int arr[] = new int[n];
-			float mean = 0;
-			for(int i=0;i<n;i++)
-			{
-
-				arr[i] = sc.nextInt();
-				mean = mean + arr[i];
-			}
-
-			mean = mean/n;
-			float divisor = n-1;
-			float ogmean = 0;
-			int pos = 0;
-			boolean flag = false;
-			for(int i=0;i<n;i++)
-			{
-				float newmean = 0;
-				for(int j=0;j<n;j++)
-				{
-					if(i==j)
-					{
-						continue;
-					}
-					else
-					{
-						newmean = newmean + arr[j];
-
-					}
-				}
-				newmean = newmean / divisor;
-
-				if(newmean == mean)
-				{
-
-					ogmean = newmean;
-					if(flag)
-					{
-						if(i<pos)
-						{
-							pos = i;
-						}
-					}
-					else
-					{
-						pos = i;
-						flag = true;
-					}
-				}
-
-			}
-
-			boolean impossible = false;
-
-			if(ogmean == 0 && pos == 0)
-			{
-
-				impossible = true;
-				System.out.println("impossible");
-
-			}
-			else
-			{
-
-				System.out.println(pos+1);
-			}
-
-
+			t = t - 1;
 		}
+
+		sc.close();		
 
 
 		
+	}
+	static void fillArray(int[] arr, Scanner sc)
+	{
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i] = sc.nextInt();
+
+		}
+	}
+	static float returnOriginalMean(int[] arr)
+	{
+		float meanBase = arr[0];
+		for(int i=1;i<arr.length;i++)
+		{
+			meanBase = meanBase + arr[i]; 
+		}
+		float mean = meanBase / arr.length ;
+		return mean;
 	}
 
 }
