@@ -1,4 +1,6 @@
-//TODO double for mean
+//TODO double for mean : done
+//TODO mergeSort
+//TODO linearSearch
 import java.util.*;
 import java.io.*;
 
@@ -98,5 +100,20 @@ class chfm
 		return mean;
 	}
 	
+	static void mergeSort(int l, int r, int[] arr)
+	{
+		while(l<r)
+		{
+			int m = (l+r)/2;
+			mergeSort(l, m, arr);
+			mergeSort(m+1, r, arr);
+			merge(l,r,m, arr);			
+		}
+
+	}
+	static void merge(int l, int r,int m, int arr[])
+	{
+
+	}
 
 }
