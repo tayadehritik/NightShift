@@ -1,5 +1,5 @@
 //TODO double for mean : done
-//TODO mergeSort
+//TODO mergeSort : done
 //TODO linearSearch
 import java.util.*;
 import java.io.*;
@@ -19,7 +19,7 @@ class chfm
 			fillArray(arr, sc);
 			double Mean = returnOriginalMean(arr);
 			int pos = positionToRemove(arr,Mean);
-
+			mergeSort(0, arr.length-1, arr);
 			if(pos<0)
 			{
 				System.out.println("Impossible");
@@ -27,6 +27,11 @@ class chfm
 			else
 			{
 				System.out.println(pos+1);
+			}
+
+			for(int i=0;i<arr.length;i++)
+			{
+				System.out.println(arr[i]);
 			}
 
 			t = t - 1;
@@ -102,17 +107,72 @@ class chfm
 	
 	static void mergeSort(int l, int r, int[] arr)
 	{
-		while(l<r)
+		if(l<r)
 		{
 			int m = (l+r)/2;
 			mergeSort(l, m, arr);
 			mergeSort(m+1, r, arr);
-			merge(l,r,m, arr);			
+			merge(l,r,m, arr);
+		}	
+			
+		
+	}
+	static void merge(int l, int r,int m, int[] arr)
+	{
+		int arr1len;
+		int arr2len;
+		arr1len = m-l+1;
+		arr2len = r-m;
+
+		int[] copy1 = new int[arr1len];
+		int[] copy2 = new int[arr2len];
+
+		for(int i=0;i<copy1.length;i++)
+		{
+			copy1[i] = arr[l+i];
+		}
+		for(int i=0;i<copy2.length;i++)
+		{
+			copy2[i] = arr[m+1+i];
+		}
+		int pointer1 = 0;
+		int pointer2 = 0;
+		int genpointer = l;
+		while(pointer1 < arr1len && pointer2 < arr2len)
+		{
+			
+			if(copy1[pointer1] < copy2[pointer2])
+			{
+				arr[genpointer] = copy1[pointer1];
+				pointer1 = pointer1 + 1;
+
+			}
+			else
+			{
+				arr[genpointer] = copy2[pointer2];
+				pointer2 = pointer2 + 1;
+			}
+			
+			genpointer = genpointer + 1;
 		}
 
-	}
-	static void merge(int l, int r,int m, int arr[])
-	{
+		while(pointer1<arr1len)
+		{
+			arr[genpointer] = copy1[pointer1];
+			pointer1 = pointer1 + 1;
+			genpointer = genpointer + 1;
+
+		}
+
+		while(pointer2<arr2len)
+		{
+			arr[genpointer] = copy2[pointer2];
+			pointer2 = pointer2 + 1;
+			genpointer = genpointer + 1;
+		}
+
+				
+		
 
 	}
 
