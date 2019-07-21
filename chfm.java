@@ -2,6 +2,9 @@
 //TODO mergeSort : done
 //TODO linearSearch
 import java.util.*;
+
+import javax.lang.model.util.ElementScanner6;
+
 import java.io.*;
 
 class chfm 
@@ -16,32 +19,24 @@ class chfm
 		{
 			int n = sc.nextInt();
 			int[] arr = new int[n];
-			int[] unsortedarr = new int[n];
-			
 			fillArray(arr, sc);
-			for(int i=0;i<arr.length;i++)
-			{
-				unsortedarr[i] = arr[i];
-			}
-
-			mergeSort(0, arr.length-1, arr);
+			int[] unsarr = arr;
 			double Mean = returnOriginalMean(arr);
-			int ele = positionToRemove(arr,Mean);
-			int pos = linearSearch(ele, unsortedarr);
-			if(pos<0)
+			int l = 0;
+			int r = arr.length-1;
+			mergeSort(l, r, arr);
+
+			int ele = binarySearch(l, r, Mean, arr);
+
+			if(ele<0)
 			{
 				System.out.println("Impossible");
 			}
 			else
 			{
-				System.out.println(pos+1);
+				int actpos = linearSearch(arr[ele], unsarr);
+				System.out.println(actpos+1);
 			}
-
-			/*for(int i=0;i<arr.length;i++)
-			{
-				System.out.println(arr[i]);
-			}*/
-
 			t = t - 1;
 		}
 
@@ -68,53 +63,7 @@ class chfm
 		double mean = meanBase / arr.length ;
 		return mean;
 	}
-	static int positionToRemove(int[] arr, double Mean)
-	{
-		int pos = -1;
-		int ele = 0;
-		boolean flagforsmall = false;
-		for(int i=0;i<arr.length;i++)
-		{
-			double tempMean = calculateMean(i,arr);
-			//System.out.println(tempMean + " "+ Mean);
-			if(tempMean == Mean)
-			{
-				if(flagforsmall)
-				{
-					if(arr[i]< arr[pos])
-					{
-						pos = i;
-					}
-				}
-				else
-				{
-					pos = i;
-					ele = arr[i];
-					break;
-					//flagforsmall = true;
-				}
-			}
-		}
-		return ele;
-	}
-	static double calculateMean(int pos, int[] arr)
-	{
-		double meanBase = 0;
-		for(int i=0;i<arr.length;i++)
-		{
-			if(i==pos)
-			{
-				continue;
-			}
-			else
-			{
-				meanBase = meanBase + arr[i];
-			}
-
-		}
-		double mean = meanBase / (arr.length-1);
-		return mean;
-	}
+	
 	
 	static void mergeSort(int l, int r, int[] arr)
 	{
@@ -186,19 +135,66 @@ class chfm
 		
 
 	}
-	static int linearSearch(int ele, int[] unsortedarr)
+
+	static int binarySearch(int l, int r, double Mean , int[] arr)
 	{
-		int pos = -1;
-		for(int i=0;i<unsortedarr.length;i++)
+		if(l<=r)
 		{
-			if(ele == unsortedarr[i])
+			int m = (l+r)/2;
+			double compmean = calculateMean(m, arr);
+			//System.out.println(compmean + " "+ Mean);
+			
+			if(compmean == Mean)
+			{
+				return m;
+			}
+			else if(compmean > Mean)
+			{
+				l = m+1;
+				return binarySearch(l, r, Mean, arr);
+			}
+			else
+			{
+				r = m-1;
+				return binarySearch(l, r, Mean, arr);
+			}
+			
+		}
+		else
+		{
+			return -10;
+		}
+	}
+	static double calculateMean(int pos, int[] arr)
+	{
+		double baseMean = 0;
+		for(int i=0;i<arr.length;i++)
+		{
+			if(pos == i)
+			{
+				continue;
+
+			}
+			else
+			{
+				baseMean = baseMean + arr[i];
+			}
+		}
+		double actMean = baseMean/(arr.length-1);
+		return actMean;
+	}
+	static int linearSearch(int key, int[] arr)
+	{
+		int pos = 0;
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i] == key)
 			{
 				pos = i;
 				break;
 			}
 		}
 		return pos;
-		
 	}
-
+	
 }
