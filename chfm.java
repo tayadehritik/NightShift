@@ -1,6 +1,8 @@
 //TODO double for mean : done
 //TODO mergeSort : done
-//TODO linearSearch
+//TODO linearSearch : done
+//TODO binaryMeanSearch : done
+//TODO main login proble : 
 import java.util.*;
 
 import javax.lang.model.util.ElementScanner6;
