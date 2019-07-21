@@ -16,10 +16,18 @@ class chfm
 		{
 			int n = sc.nextInt();
 			int[] arr = new int[n];
+			int[] unsortedarr = new int[n];
+			
 			fillArray(arr, sc);
-			double Mean = returnOriginalMean(arr);
-			int pos = positionToRemove(arr,Mean);
+			for(int i=0;i<arr.length;i++)
+			{
+				unsortedarr[i] = arr[i];
+			}
+
 			mergeSort(0, arr.length-1, arr);
+			double Mean = returnOriginalMean(arr);
+			int ele = positionToRemove(arr,Mean);
+			int pos = linearSearch(ele, unsortedarr);
 			if(pos<0)
 			{
 				System.out.println("Impossible");
@@ -29,10 +37,10 @@ class chfm
 				System.out.println(pos+1);
 			}
 
-			for(int i=0;i<arr.length;i++)
+			/*for(int i=0;i<arr.length;i++)
 			{
 				System.out.println(arr[i]);
-			}
+			}*/
 
 			t = t - 1;
 		}
@@ -63,6 +71,7 @@ class chfm
 	static int positionToRemove(int[] arr, double Mean)
 	{
 		int pos = -1;
+		int ele = 0;
 		boolean flagforsmall = false;
 		for(int i=0;i<arr.length;i++)
 		{
@@ -80,11 +89,13 @@ class chfm
 				else
 				{
 					pos = i;
-					flagforsmall = true;
+					ele = arr[i];
+					break;
+					//flagforsmall = true;
 				}
 			}
 		}
-		return pos;
+		return ele;
 	}
 	static double calculateMean(int pos, int[] arr)
 	{
@@ -174,6 +185,20 @@ class chfm
 				
 		
 
+	}
+	static int linearSearch(int ele, int[] unsortedarr)
+	{
+		int pos = -1;
+		for(int i=0;i<unsortedarr.length;i++)
+		{
+			if(ele == unsortedarr[i])
+			{
+				pos = i;
+				break;
+			}
+		}
+		return pos;
+		
 	}
 
 }
