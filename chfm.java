@@ -2,7 +2,7 @@
 //TODO mergeSort : done
 //TODO linearSearch : done
 //TODO binaryMeanSearch : done
-//TODO main login proble : 
+//TODO main login proble : multiple elements with same mean( finding the smallest is not done )
 import java.util.*;
 
 import javax.lang.model.util.ElementScanner6;
@@ -137,9 +137,11 @@ class chfm
 		
 
 	}
-
+	//static boolean smallesteleflag = false;
+	//static int smallest = 0;
 	static int binarySearch(int l, int r, double Mean , int[] arr)
 	{
+		
 		if(l<=r)
 		{
 			int m = (l+r)/2;
@@ -148,7 +150,17 @@ class chfm
 			
 			if(compmean == Mean)
 			{
-				return m;
+				//return m;
+				int retpos = goLeft(m, arr, Mean);
+				if(retpos < 0)
+				{
+					return m;
+				}
+				else
+				{
+					return retpos;
+				}
+				
 			}
 			else if(compmean > Mean)
 			{
@@ -198,5 +210,34 @@ class chfm
 		}
 		return pos;
 	}
-	
+
+	static int goLeft(int pos, int[] arr, double key)
+	{
+		if(pos != 0)
+		{
+			int retpos = pos;
+			int counter = pos-1;
+			while(counter>=0)
+			{
+				double cmean = calculateMean(counter, arr);
+				if(cmean == key)
+				{
+					retpos = counter;
+					counter = counter - 1;
+				}
+				else
+				{
+					break;
+				}
+			}
+			return retpos;
+		}
+		else
+		{
+			return -1;
+		}
+
+	}
+
+
 }
