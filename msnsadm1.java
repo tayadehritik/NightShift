@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class msnsadm1
+public class Main
 {
 	public static void main(String args[])
 	{
@@ -9,20 +9,34 @@ public class msnsadm1
 		while(t!=0)
 		{
 			int n = sc.nextInt();
-			//20 points for goal
-			//10 points for foul
-			//<0 points goes to 0 points
+			
 			int[] a_goals = new int[n];
 			int[] b_fouls = new int[n];
 			
-			int max = a_goals[0];
+			
+			for(int i=0;i<n;i++)
+			{
+
+				a_goals[i] = sc.nextInt();
+			}
+			for(int i=0;i<n;i++)
+			{
+				b_fouls[i] = sc.nextInt();
+			}
+
+
+
+			int max = (a_goals[0]*20)-(b_fouls[0]*10);
+
+			
+
 
 			for(int i=0;i<n;i++)
 			{
 				
-				int mul-goal = a_goals[i] * 20;
-				int mul-foul = b_fouls[i] * 10;
-				int final_points = mul-goal - mul-foul;
+				int mulgoal = a_goals[i] * 20;
+				int mulfoul = b_fouls[i] * 10;
+				int final_points = mulgoal - mulfoul;
 				if(final_points<0)
 				{
 					final_points = 0;
