@@ -15,11 +15,7 @@ class dstapls
 			int firstcand = 0;
 			int secondcand = 0;
 
-			for(int j=0;j<k;j++)
-			{
-				
-			}
-
+			 
 		}
 		
 	}
