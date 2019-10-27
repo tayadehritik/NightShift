@@ -19,6 +19,61 @@ class saddlepoint
 
 void saddlepoint::saddle()
 {
+    int rows[m];
+    int columns[n];
+
+    for(int i=0;i<m;i++)
+    {
+        int smallest = arr[i][0];
+        for(int j=0;j<n;j++)
+        {
+            if(arr[i][j] < smallest)
+            {
+                smallest = arr[i][j];
+            }
+        }
+        rows[i] = smallest;
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        int largest = arr[0][i];
+        for(int j=0;j<m;j++)
+        {
+            if(arr[j][i]>largest)
+            {
+                largest = arr[j][i];
+            }
+        }
+        columns[i] = largest;
+    }
+    
+
+    cout<<endl;
+    for(int i=0;i<m;i++)
+    {
+        cout<<rows[i]<<" ";
+    }
+
+    cout<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cout<<columns[i]<<" ";
+    }
+
+
+
+    for(int i=0;i<m;i++)
+    {
+        for( int j=0;j<n;j++)
+        {
+            if(rows[i] == columns[j])
+            {
+                cout<<"Saddle point found "<<rows[i]<<endl;
+            }
+        }
+    }
+    
 
 }
 void saddlepoint::accept()
@@ -48,7 +103,7 @@ void saddlepoint::display()
         }
         
     }
-    cout<<endl;
+    cout<<endl; 
 }
 
 int main()
