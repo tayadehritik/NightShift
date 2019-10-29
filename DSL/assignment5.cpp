@@ -84,7 +84,8 @@ void list::delwithneg()
     node *trav = head;
     while(trav != NULL)
     {
-        
+	
+	trav = trav->next;        
         
     }
 }
