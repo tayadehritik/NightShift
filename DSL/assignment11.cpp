@@ -26,10 +26,32 @@ int main()
 
 	}
 
+	int arr1[5] = {5,4,3,1,2};
+
 	for(int i=0;i<5;i++)
 	{
 		cout<<arr[i];
 	}
+
+	for(int gap = 5/2 ;gap>0;gap = gap/2)
+	{
+
+		for(int i=gap ;i<n;i++)
+		{
+
+			int temp = arr[i];
+			int j;
+			for(j=i;j>=gap&&arr[j-gap] > temp;j = j-gap)
+			{
+				arr[j] = arr[j-gap];
+			
+			}
+			arr[j] = temp;
+			
+		}		
+
+	}
+
 
 	return 0;
 }
