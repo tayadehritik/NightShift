@@ -35,6 +35,7 @@ int main()
     ofstream outobj("hritik.txt", ios::out);
     outobj.write((char *)&emp, sizeof(emp));
     emp.write(456,"hritik1");
+    cout<<outobj.tellp();
     outobj.write((char *)&emp, sizeof(emp));
     outobj.close();
 
