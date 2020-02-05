@@ -6,17 +6,40 @@ class node
     public:
         node *right, *left;
         int lbit, rbit;
-
+        int data;
 };
 
 class BTree
 {
     public:
     node *root;
-
-    void create(node *temp)
+    BTree()
     {
+        root = NULL;
+    }
 
+    void create(int data)
+    {
+        node *temp = new node;
+        temp->data = data;
+        temp->lbit = 0;
+        temp->rbit = 0;
+
+        if(root = NULL)
+        {
+            node *dummy = new node;
+            dummy->data = -1;
+            dummy->lbit = 1;
+            dummy->rbit = 1;
+            temp->left = dummy;
+            temp->right = dummy;
+            root = temp;
+        }
+        else
+        {
+            insert(root, temp);
+        }
+        
     }
 
     void insert(node *temp, node *trav)
@@ -36,7 +59,7 @@ class BTree
 
     void displayPostOrder(node *root)
     {
-        
+
     }
 
 };
@@ -44,5 +67,6 @@ class BTree
 
 int main()
 {
+    BTree tree;
     return 0;
 }
