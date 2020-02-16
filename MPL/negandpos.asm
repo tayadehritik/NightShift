@@ -15,31 +15,20 @@ section .data
 	arr1 db 1
 	ptr_var db '0'
 	trueval db 'negative value'
-	falseval db 'positive value'
-	flen equ $-falseval
 	tlen equ $-trueval
-		
-
+	falseval db 'positive value'
+	flen equ $-falseval		
+	
 section .bss
 
-section .code
+section .text
 global _start
 _start:
 	
 	mov rbx, 0
 	mov rdx, 6
-	push rax
-	push rbx
-	push rdx
-	push rcx	
-	mov eax, [arr1]
-	rol eax, 1
-	jc printdata trueval, tlen
-	pop rcx
-	pop rdx
-	pop rbx	
-	pop rax	
-	
+		
+		
 	printloop:
 		mov rax, [arr+rbx]
 		add rax, '0'
