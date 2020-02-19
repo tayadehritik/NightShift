@@ -29,7 +29,7 @@ _start:
 	mov rdx, 6
 	push rax
 	mov eax, [arr1]
-	rol eax, 1
+ 	eax, 1
 	pop rax			
 	
 		
@@ -49,6 +49,7 @@ _start:
 		inc rbx
 		dec rdx
 		jnz printloop
+
 
 
 	mov eax, 2
