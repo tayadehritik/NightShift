@@ -12,7 +12,7 @@ section .data
 	
 	var db '1'
 	arr db 2, 4, 3, 5, 6, 8
-	arr1 db 1
+	arr1 db -1
 	ptr_var db '0'
 	trueval db 'negative value'
 	tlen equ $-trueval
@@ -27,7 +27,11 @@ _start:
 	
 	mov rbx, 0
 	mov rdx, 6
-		
+	push rax
+	mov eax, [arr1]
+	rol eax, 1
+	pop rax			
+	
 		
 	printloop:
 		mov rax, [arr+rbx]
@@ -45,6 +49,11 @@ _start:
 		inc rbx
 		dec rdx
 		jnz printloop
+
+
+	mov eax, 2
+	mov ecx, 3
+	mov ebx, 5
 		
 	mov eax, 1
 	mov ebx, 0
