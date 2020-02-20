@@ -73,7 +73,21 @@ public:
 			}
 			else
 			{
-				cout<<endl<<"key not found";
+				bool flag = false;
+				while(i<n)
+				{
+					if(arr[(hashval+i)%n] == key)
+					{
+						cout<<endl<<"Key found at "<<(hashval+i)%n;
+						flag = true;
+						break;
+					}
+					i++;
+				}
+				if(flag == false)
+				{
+					cout<<endl<<"Key not found";
+				}
 
 			}
 
@@ -133,7 +147,7 @@ int main() {
 	*/
 	abc.printarr();
 
-	abc.searchKey(22);
+	abc.searchKey(32);
 
 	return 0;
 }
