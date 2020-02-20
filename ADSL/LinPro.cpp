@@ -96,6 +96,36 @@ public:
 		void deleteKey(int key)
 		{
 
+			int hashval = hashFunc(key);
+			int i=0;
+
+
+			if(arr[(hashval+i)%n] == key)
+			{
+				cout<<endl<<"Key found at "<<(hashval+i)%n<<" and deleted"<<endl;
+				arr[(hashval+i)%n] = NULL;
+
+			}
+			else
+			{
+				bool flag = false;
+				while(i<n)
+				{
+					if(arr[(hashval+i)%n] == key)
+					{
+						cout<<endl<<"Key found at "<<(hashval+i)%n<<" and deleted"<<endl;
+						arr[(hashval+i)%n] = NULL;
+						flag = true;
+						break;
+					}
+					i++;
+				}
+				if(flag == false)
+				{
+					cout<<endl<<"Key not found";
+				}
+
+			}
 		}
 		int hashFunc(int key)
 		{
@@ -149,5 +179,7 @@ int main() {
 
 	abc.searchKey(32);
 
+	abc.deleteKey(41);
+	abc.printarr();
 	return 0;
 }
