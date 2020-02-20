@@ -63,6 +63,21 @@ public:
 		void searchKey(int key)
 		{
 
+			int hashval = hashFunc(key);
+			int i=0;
+
+
+			if(arr[(hashval+i)%n] == key)
+			{
+				cout<<endl<<"Key found at "<<(hashval+i)%n;
+			}
+			else
+			{
+				cout<<endl<<"key not found";
+
+			}
+
+
 		}
 		void deleteKey(int key)
 		{
@@ -118,6 +133,7 @@ int main() {
 	*/
 	abc.printarr();
 
+	abc.searchKey(22);
 
 	return 0;
 }
