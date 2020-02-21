@@ -18,7 +18,7 @@ class pixel
 class Line:public pixel
 {
 	private:
-		int dx,dy,x,y,Dx,Dx,e;
+		int dx,dy,x,y,e;
 	public:
 		Line()
 		{
@@ -29,6 +29,20 @@ class Line:public pixel
 		}
 		void draw()
 		{
+			for(int x = x1,y = y1;x<=x2;x++)
+			{
+				putpixel(x,y,RED);
+				if(e < 0)
+				{
+					e = e + (2*dy);
+				}
+				else if(e >= 0)
+				{
+					e = e + (2*dy) - (2*dx);
+					y = y + 1;
+				}
+				
+			}
 		}
 
 };
@@ -38,6 +52,7 @@ int main()
 	int gd=DETECT,gm;
 	initgraph(&gd,&gm,NULL);
 	Line l;
+	l.draw();
 	getch();
 	return 0;
 }
