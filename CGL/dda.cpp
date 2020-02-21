@@ -7,10 +7,7 @@ class pixel
 	protected: 
 		int x1,x2,y1,y2;
 	public:
-		pixel()
-		{
-			x1=x2=y1=y2=0;
-		}
+		
 		void getdata()
 		{
 			cout<<endl<<"Enter x1 and y1";
@@ -22,30 +19,37 @@ class pixel
 };
 
 
-class line:public pixel
+class Line:public pixel
 {
 	private:
-		int dx,dy,DX,DY,e,len,x,y;
+		int dx,dy,DX,DY,e,len,x,y,m;
 	public:
 		void calculate()
 		{
 			dx = x2-x1;
 			dy = y2-y1;
+			m = dy/dx;
 			
 		}
 		void draw()
 		{
 			getdata();
 			calculate();
-
-			int m = dx/dy;
-			if(m<1)
+			x = x1;
+			y = y1;
+			while(x != x2 && y != y2)	
 			{
-					
-			}
-			else
-			{
-			
+				putpixel(abs(x),abs(y),RED);
+				if(m<1)
+				{
+					y = y+m;
+					x = x+1;			
+				}
+				else
+				{
+					y = y+1;
+					x = x+m;
+				}
 			}			
 		}
 
@@ -56,8 +60,8 @@ int main()
 {
 	int gd=DETECT,gm;
 	initgraph(&gd,&gm,NULL);
-	putpixel(50,50,RED);
-	
+	Line l;
+	l.draw();
 	getch();
 	return 0;
 }
