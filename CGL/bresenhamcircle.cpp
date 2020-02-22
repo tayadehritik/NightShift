@@ -24,10 +24,9 @@ class BresCircle
 			putpixel(xc-nx, yc+ny,RED);
 			putpixel(xc-nx, yc-ny,RED);
 			putpixel(xc+ny, yc+nx,RED);
-			putpixel(xc+ny, yc-ny,RED);
-			putpixel(xc-ny, yc+ny,RED);
-			putpixel(xc-ny, yc-ny,RED);
-			cout<<"here1";
+			putpixel(xc+ny, yc-nx,RED);
+			putpixel(xc-ny, yc+nx,RED);
+			putpixel(xc-ny, yc-nx,RED);
 			
 
 		}
@@ -35,7 +34,7 @@ class BresCircle
 		void bresCircle()
 		{
 			d = 3-(2*r);
-			for(x=xc,y=yc;y>=x;x++)
+			for(x=0,y=r;y>=x;x++)
 			{
 				drawCircle(x,y);
 				cout<<d;
@@ -61,6 +60,6 @@ int main()
 	initgraph(&gd,&gm,NULL);
 	BresCircle c;
 	c.bresCircle();
-	
+	getch();	
 	return 0;
 }
