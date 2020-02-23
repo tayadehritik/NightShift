@@ -21,43 +21,7 @@ class BinaryThreadedSearchTree
 
 		void insert(int data)
 		{
-			node *temp = new node;
-			temp->data = data;
-			temp->left = NULL;
-			temp->right = NULL;
-			if(root == NULL)
-			{
-				root = temp;	
-			}
-			else
-			{
-			
-				node *trav = root;
-				node *curr = root;
-
-				while(trav!=NULL)
-				{
-					curr = trav;
-					if(temp->data < trav->data)
-					{
-						trav = trav->left;
-					}	
-					else
-					{
-						trav = trav->right;
-					}
-				}
-
-				if(temp->data < curr->data)
-				{
-					curr->left = temp;
-				}
-				else
-				{
-					curr->right = temp;
-				}
-			
-			}
+	
 		}
 		void inorderSingleThread()
 		{
@@ -75,6 +39,22 @@ class BinaryThreadedSearchTree
 			}	
 		}
 
+		void displaySingleThread()
+		{
+			
+		
+		}
+
+		node* leftmost(node *temp)
+		{
+			node *trav = temp;
+			while(trav->left!=NULL)
+			{
+				trav = trav->left;
+			}
+			return trav;
+		}
+
 		node* getroot()
 		{
 			return root;
@@ -88,7 +68,9 @@ int main()
 	btree.insert(10);
 	btree.insert(20);
 	btree.insert(9);
-	btree.insert(11);
-	btree.display(btree.getroot());
+	//btree.display(btree.getroot());
+
+	cout<<"-----";
+	btree.displaySingleThread();
 	return 0;
 }
