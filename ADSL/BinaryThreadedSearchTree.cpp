@@ -32,6 +32,30 @@ class BinaryThreadedSearchTree
 			else
 			{
 			
+				node *trav = root;
+				node *curr = root;
+
+				while(trav!=NULL)
+				{
+					curr = trav;
+					if(temp->data < trav->data)
+					{
+						trav = trav->left;
+					}	
+					else
+					{
+						trav = trav->right;
+					}
+				}
+
+				if(temp->data < curr->data)
+				{
+					curr->left = temp;
+				}
+				else
+				{
+					curr->right = temp;
+				}
 			
 			}
 		}
@@ -40,10 +64,20 @@ class BinaryThreadedSearchTree
 			cout<<root->data;
 		}
 
-		node* leftMost(root)
+		void display(node *trav)
 		{
-			node *curr = root;
+			if(trav != NULL)
+			{
+				display(trav->left);
+				cout<<endl<<trav->data;
+				display(trav->right);
+			
+			}	
+		}
 
+		node* getroot()
+		{
+			return root;
 		}
 };
 
@@ -52,6 +86,9 @@ int main()
 {
 	BinaryThreadedSearchTree btree;
 	btree.insert(10);
-	btree.inorderSingleThread();
+	btree.insert(20);
+	btree.insert(9);
+	btree.insert(11);
+	btree.display(btree.getroot());
 	return 0;
 }
