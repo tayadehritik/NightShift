@@ -6,7 +6,7 @@ class node
 	public:
 		int data;
 		node *left,*right;
-		bool leftChild, rightChild;
+		bool rightThread;
 };
 
 class BinaryThreadedSearchTree
@@ -25,7 +25,7 @@ class BinaryThreadedSearchTree
 			temp->data = data;
 			temp->left = NULL;
 			temp->right = NULL;
-			temp->rightChild = false;
+			temp->rightThread = false;
 			if(root == NULL)
 			{
 				root = temp;
@@ -33,7 +33,37 @@ class BinaryThreadedSearchTree
 			}
 			else
 			{
-			
+				node *trav = root;
+				node *curr = root;
+				while(trav != NULL)
+				{
+					curr = trav;
+					if(temp->data > trav->data)
+					{
+						trav = trav->right;
+					}
+					else
+					{
+						trav = trav->left;
+					}
+
+				}
+
+				if(temp->data > curr->data)
+				{
+					temp->right = curr->right;
+					curr->right = temp;
+					temp->rightThread = true;
+					curr->rightThread = false;
+					
+				}
+				else
+				{
+					temp->right = curr;
+					curr->left = temp;
+					temp->rightThread = true;
+				}
+					
 			}
 
 
@@ -56,8 +86,22 @@ class BinaryThreadedSearchTree
 
 		void displaySingleThread()
 		{
+			node *trav = leftmost(root);	
+			while(trav != NULL)
+			{
+				cout<<endl<<trav->data;
+				if(trav->rightThread)
+				{
+					trav = trav->right;
+					
+				}
+				else
+				{
+					trav = leftmost(trav->right);
 			
-		
+				}	
+			
+			}	
 		}
 
 		node* leftmost(node *temp)
@@ -83,7 +127,9 @@ int main()
 	btree.insert(10);
 	btree.insert(20);
 	btree.insert(9);
-	//btree.display(btree.getroot());
+
+	btree.insert(30);
+	btree.insert(15);
 
 	cout<<"-----";
 	btree.displaySingleThread();
