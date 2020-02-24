@@ -21,7 +21,22 @@ class BinaryThreadedSearchTree
 
 		void insert(int data)
 		{
-	
+			node *temp = new node;
+			temp->data = data;
+			temp->left = NULL;
+			temp->right = NULL;
+			temp->rightChild = false;
+			if(root == NULL)
+			{
+				root = temp;
+
+			}
+			else
+			{
+			
+			}
+
+
 		}
 		void inorderSingleThread()
 		{
