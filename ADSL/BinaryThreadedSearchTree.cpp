@@ -6,7 +6,7 @@ class node
 	public:
 		int data;
 		node *left,*right;
-		bool rightThread;
+		bool rightThread, leftThread;
 };
 
 class BinaryThreadedSearchTree
@@ -26,6 +26,7 @@ class BinaryThreadedSearchTree
 			temp->left = NULL;
 			temp->right = NULL;
 			temp->rightThread = false;
+			temp->leftThread = false;
 			if(root == NULL)
 			{
 				root = temp;
@@ -51,37 +52,33 @@ class BinaryThreadedSearchTree
 
 				if(temp->data > curr->data)
 				{
+					
+					
 					temp->right = curr->right;
+					
 					curr->right = temp;
+					
 					temp->rightThread = true;
 					curr->rightThread = false;
+					
+
 					
 				}
 				else
 				{
+					
 					temp->right = curr;
+					
 					curr->left = temp;
+					
+					curr->leftThread = false;
 					temp->rightThread = true;
+					
 				}
 					
 			}
 
 
-		}
-		void inorderSingleThread()
-		{
-			cout<<root->data;
-		}
-
-		void display(node *trav)
-		{
-			if(trav != NULL)
-			{
-				display(trav->left);
-				cout<<endl<<trav->data;
-				display(trav->right);
-			
-			}	
 		}
 
 		void displaySingleThread()
@@ -127,11 +124,20 @@ int main()
 	btree.insert(10);
 	btree.insert(20);
 	btree.insert(9);
-
 	btree.insert(30);
 	btree.insert(15);
-
-	cout<<"-----";
 	btree.displaySingleThread();
 	return 0;
 }
+
+
+/*
+$ ./BinaryThreadedTree 
+
+9
+10
+15
+20
+30
+
+*/
