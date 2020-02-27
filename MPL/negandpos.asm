@@ -20,9 +20,7 @@ section .bss
 section .text
 global _start
 _start:
-	mov rax, [arr]
-	ror rax, 1	
-	mov [printvar], rax	
+	
 	printdata printvar, 1
 	mov rax, 1
 	mov rbx, 0
