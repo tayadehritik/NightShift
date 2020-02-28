@@ -22,7 +22,6 @@ global _start
 _start:
 
 	mov rsi, arr64
-	inc rsi	
 	mov rax, [rsi]
 	rol rax, 1
 	
