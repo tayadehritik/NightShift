@@ -52,7 +52,7 @@ class dynamo
 		s.append("9");
 	}
 	
-	long retnum = Integer.parseInt(s.toString());
+	long retnum = Long.parseLong(s.toString());
     	return retnum+1;
     }
 }
