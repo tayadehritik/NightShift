@@ -88,8 +88,26 @@ int main()
 	int gd=DETECT,gm;
 	initgraph(&gd,&gm,NULL);
 	Line l;
-	l.drawDDA();
-	l.drawBresenham();		
+	int ch;
+
+	while(true)
+	{
+		cout<<endl<<"Enter 1.Draw DDA line 2.Draw Bresenham line";
+		cin>>ch;
+		switch(ch)
+		{
+			case 1:
+				l.drawDDA();
+				break;
+			case 2:
+				l.drawBresenham();
+				break;
+
+			default:
+				cout<<endl<<"Wrong choice";
+		
+		}
+	}	
 
 	getch();
 	return 0;
