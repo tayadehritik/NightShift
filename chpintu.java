@@ -13,6 +13,7 @@ class chpintu
 			int m = sc.nextInt();
 			int[] arrp = new int[n];
 			int[] arrf = new int[n];
+			int[] fruits = new int[m+1];
 			for(int i=0;i<n;i++)
 			{
 				arrf[i] = sc.nextInt();
@@ -20,6 +21,16 @@ class chpintu
 			for(int i=0;i<n;i++)
 			{
 				arrp[i] = sc.nextInt();
+			}
+			int count = 0;
+			for(int i=0;i<n;i++)
+			{
+				fruits[arrf[i]] = fruits[arrf[i]] + arrp[i];
+			}
+
+			for(int i=0;i<fruits.length;i++)
+			{
+				System.out.println(i+" "+fruits[i]);
 			}
 		}
 	
