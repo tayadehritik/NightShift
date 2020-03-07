@@ -5,7 +5,23 @@ class chpintu
 {
 	public static void main(String args[])
 	{
-		System.out.println("here");
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		for(int k=0;k<t;k++)
+		{
+			int n = sc.nextInt();
+			int m = sc.nextInt();
+			int[] arrp = new int[n];
+			int[] arrf = new int[n];
+			for(int i=0;i<n;i++)
+			{
+				arrf[i] = sc.nextInt();
+			}
+			for(int i=0;i<n;i++)
+			{
+				arrp[i] = sc.nextInt();
+			}
+		}
 	
 	}
 
