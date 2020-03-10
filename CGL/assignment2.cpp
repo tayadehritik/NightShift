@@ -6,12 +6,14 @@ using namespace std;
 class pixel
 {
 	protected: 
-		int xc, yc;
+		int xc, yc, r;
 	public:
 		void getdata()
 		{
-			cout<<"Enter center points x and y";
+			cout<<endl<<"Enter center points x and y";
 			cin>>xc>>yc;
+			cout<<endl<<"Enter radius of circle";
+			cin>>r;
 		}
 
 };
@@ -19,16 +21,9 @@ class pixel
 class BresCircle: public pixel
 {
 	private:
-		int  x, y,d,r;
+		int  x, y,d;
 	public:
-		BresCircle()
-		{
-
-			getdata();
-			cout<<endl<<"Enter radius for circle";
-			cin>>r;
-	
-		}
+		
 
 		void drawCircle(int nx, int ny)
 		{
@@ -71,8 +66,30 @@ int main()
 {
 	int gd=DETECT,gm;
 	initgraph(&gd,&gm,NULL);
+	int ch;
 	BresCircle c;
-	c.drawCircle();
+	while(true)
+	{
+		cout<<"\n1.Draw Circle \n2.Exit"<<endl;
+		cin>>ch;
+		
+		switch(ch)
+		{
+			case 1: c.getdata();
+				c.drawCircle();
+				break;
+
+			case 2:
+				exit(0);
+
+			default:
+				cout<<endl<<"Wrong choice";
+
+		
+		}	
+	
+	}
+
 	getch();	
 	return 0;
 }
