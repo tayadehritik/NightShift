@@ -5,8 +5,9 @@ using namespace std;
 
 class pixel
 {
-	public:
+	protected:
 		int x1, x2, y1,y2,thickness;
+	public:
 		void getdata()
 		{
 
