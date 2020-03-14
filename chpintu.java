@@ -13,40 +13,45 @@ class chpintu
 			int[] arrp = new int[n];
 			int[] arrf = new int[n];
 			int[] fruits = new int[m+1];
-	
+			int[] tagged = new int[m+1];
+
 			for(int i=0;i<n;i++)
 			{
 				arrf[i] = sc.nextInt();
 			}
 			for(int i=0;i<n;i++)
 			{
-				arrp[i] = sc.nextInt();
+				int num = sc.nextInt();
+				arrp[i] = num;
 			}
 			
-		
+			Set<Integer> tset = new HashSet();
 
 			for(int i=0;i<n;i++)
 			{
 				fruits[arrf[i]] = fruits[arrf[i]] + arrp[i];
-			}		
+				tset.add(arrf[i]);
+			}	
+
 			int smallest = fruits[1];
 			if(smallest == 0)
 			{
-				int i = 2;
-				while(smallest != 0)
+				for(int i=2;smallest == 0 && i<=m;i++)
 				{
 					smallest = fruits[i];
-					i++;
 				}
 			}		
-
-			for(int i=1;i<=m;i++)
+			
+			Iterator<Integer> iterator = tset.iterator();
+			while(iterator.hasNext())
 			{
-				if(fruits[i] < smallest && fruits[i] != 0)
+				int ele = iterator.next();
+		
+				if(fruits[ele] < smallest)
 				{
-					smallest = fruits[i];
+					smallest = fruits[ele];
 				}
-			}
+			}	
 
 			System.out.println(smallest);
 			
