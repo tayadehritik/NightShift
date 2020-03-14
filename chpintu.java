@@ -1,6 +1,5 @@
 import java.util.*;
 import java.lang.*;
-
 class chpintu
 {
 	public static void main(String args[])
@@ -14,6 +13,7 @@ class chpintu
 			int[] arrp = new int[n];
 			int[] arrf = new int[n];
 			int[] fruits = new int[m+1];
+	
 			for(int i=0;i<n;i++)
 			{
 				arrf[i] = sc.nextInt();
@@ -22,16 +22,34 @@ class chpintu
 			{
 				arrp[i] = sc.nextInt();
 			}
-			int count = 0;
+			
+		
+
 			for(int i=0;i<n;i++)
 			{
 				fruits[arrf[i]] = fruits[arrf[i]] + arrp[i];
+			}		
+			int smallest = fruits[1];
+			if(smallest == 0)
+			{
+				int i = 2;
+				while(smallest != 0)
+				{
+					smallest = fruits[i];
+					i++;
+				}
+			}		
+
+			for(int i=1;i<=m;i++)
+			{
+				if(fruits[i] < smallest && fruits[i] != 0)
+				{
+					smallest = fruits[i];
+				}
 			}
 
-			for(int i=0;i<fruits.length;i++)
-			{
-				System.out.println(i+" "+fruits[i]);
-			}
+			System.out.println(smallest);
+			
 		}
 	
 	}
