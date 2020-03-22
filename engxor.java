@@ -24,26 +24,20 @@ class engxor
 			//slow solution
 			for(int i=0;i<q;i++)
 			{
-				String[] seqb = new String[n];
+				int[] seqb = new int[n];
 				for(int j=0;j<n;j++)
 				{
 					int temp = seqp[j] ^ queries[i];
-					seqb[j] = Integer.toBinaryString(temp);
+					seqb[j] = temp;
 				}
 				int even = 0;
 				int odd = 0;
 				for(int j=0;j<n;j++)
 				{
 					
-					int numberof1 = 0;
-					for(int k=0;k<seqb[j].length();k++)
-					{
-						if(seqb[j].charAt(k) == '1')
-						{
-							numberof1 = numberof1 + 1;
-						}
-					}
-					if(numberof1 % 2 == 0)
+					
+				
+					if(findPar(seqb[j]))
 					{
 						even = even + 1;
 					}
@@ -57,6 +51,23 @@ class engxor
 
 		}
 	
+	}
+	static boolean findPar(int num)
+	{
+		int y = num ^ (num << 1);
+		y = y ^ ( y << 2);
+		y = y ^ ( y << 4);
+		y = y ^ ( y << 8);
+		y = y ^ ( y << 16);
+
+		if((y & 1) >0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }
