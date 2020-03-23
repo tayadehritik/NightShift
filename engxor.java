@@ -34,8 +34,7 @@ class engxor
 				int odd = 0;
 				for(int j=0;j<n;j++)
 				{
-					
-					
+								
 				
 					if(findPar(seqb[j]))
 					{
@@ -54,19 +53,19 @@ class engxor
 	}
 	static boolean findPar(int num)
 	{
-		int y = num ^ (num << 1);
-		y = y ^ ( y << 2);
-		y = y ^ ( y << 4);
-		y = y ^ ( y << 8);
-		y = y ^ ( y << 16);
+		int y = num ^ (num >> 1);
+		y = y ^ ( y >> 2);
+		y = y ^ ( y >> 4);
+		y = y ^ ( y >> 8);
+		y = y ^ ( y >> 16);
 
 		if((y & 1) >0)
 		{
-			return true;
+			return false;
 		}
 		else
 		{
-			return false;
+			return true;
 		}
 	}
 
