@@ -1,4 +1,7 @@
 import java.util.*;
+
+import javax.lang.model.util.ElementScanner6;
+
 import java.lang.*;
 import java.io.*;
 
@@ -15,38 +18,28 @@ class giftsrc
             int y = 0;
             int n = Integer.parseInt(sc.readLine());
             String s = sc.readLine();
-            char prev='k';
+            char curr='k';
+            int[] currcoords = new int[2];
+            int[] nextcoords = new int[2];
             for(int i=0;i<s.length();i++)
             {
-                char curr = s.charAt(i);
-                if(prev == curr)
+                char next = s.charAt(i);
+                if(curr == next)
                 {
                     continue;
                 }
                 else
                 {
-                    if(curr == 'U')
+                    currcoords[0] = x;
+                    currcoords[1] = y;
+                    nextcoords = translateCoord(curr, currcoords[0], currcoords[1]);
+                    if(!checkIfOnSameAxis(currcoords, nextcoords))
                     {
-                        x = x;
-                        y = y + 1;
-                    }
-                    else if(curr == 'L')
-                    {
-                        x = x - 1;
-                        y = y ;
-                    }
-                    else if(curr == 'R')
-                    {
-                        x = x+1;
-                        y = y;
-                    }
-                    else if(curr == 'D')
-                    {
-                        x = x;
-                        y = y -1;
+                        x = nextcoords[0];
+                        y = nextcoords[1];
                     }
                 }
-                prev = curr;
+                curr = next;
             }
             System.out.println(x+" "+y);
             t = t-1;
@@ -54,9 +47,53 @@ class giftsrc
 
 
     }
-    public static boolean checkIfOnSameAxis(char prevdir, char currdir)
+    public static boolean checkIfOnSameAxis(int[] currcoords, int[] nextcoords)
     {
+        if(nextcoords[0] - currcoords[0] == 0)
+        {
+            //moving on x axis
+            return true;
+        }
+        else if(nextcoords[1]- nextcoords[0] == 0)
+        {
+            //moving on y axis
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
 
+        
     }
 
+    public static int[] translateCoord(char dir, int x, int y)
+    {
+        int[] coord = new int[2];
+        coord[0] = x;
+        coord[1] = y;
+    
+        if(dir == 'U')
+        {
+            
+             coord[1] = coord[1] + 1;
+       }
+        else if(dir == 'L')
+        {
+             coord[0] = coord[0] - 1;
+             
+        }
+        else if(dir == 'R')
+        {
+            coord[0] = coord[0]+1;
+            
+        }
+        else if(dir == 'D')
+        {
+            
+            coord[1] = coord[1] -1;
+        }              
+        return coord;
+    }
 }
