@@ -26,19 +26,36 @@ class giftsrc
                 else
                 {
                     if(curr == 'U')
-                    {}
+                    {
+                        x = x;
+                        y = y + 1;
+                    }
                     else if(curr == 'L')
-                    {}
+                    {
+                        x = x - 1;
+                        y = y ;
+                    }
                     else if(curr == 'R')
-                    {}
+                    {
+                        x = x+1;
+                        y = y;
+                    }
                     else if(curr == 'D')
-                    {}
+                    {
+                        x = x;
+                        y = y -1;
+                    }
                 }
+                prev = curr;
             }
-
+            System.out.println(x+" "+y);
             t = t-1;
         }
 
+
+    }
+    public static boolean checkIfOnSameAxis(char prevdir, char currdir)
+    {
 
     }
 
