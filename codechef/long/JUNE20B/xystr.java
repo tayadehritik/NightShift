@@ -16,7 +16,41 @@ class xystr
 	}
 	public static int getPairs(String s)
 	{
-		return 0;
+		int n = s.length();
+		char arr[] = s.toCharArray();
+		int pairs = 0;
+		Queue<Character> queue = new LinkedList<>();
+		for(int i=0;i<arr.length;i++)
+		{
+			try
+			{
+				int head = queue.peek();
+			
+				
+				if(arr[i] != head)
+				{
+					queue.add(arr[i]);
+				}
+				
+				/*System.out.println(queue);*/
+				if(queue.size() == 2)
+				{
+					queue.remove();
+					queue.remove();
+					pairs = pairs + 1;
+					
+				}
+
+			}
+			catch(NullPointerException e)
+			{
+				queue.add(arr[i]);
+				/*System.out.println(queue);*/
+			}
+			
+		}
+		return pairs;
 	}
+
 	
 }
